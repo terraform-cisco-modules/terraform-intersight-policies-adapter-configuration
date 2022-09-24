@@ -34,7 +34,7 @@ data "intersight_adapter_config_policy" "adapter_configuration" {
   depends_on = [
     module.main
   ]
-  name         = "test"
+  name = "test"
 }
 
 resource "test_assertions" "adapter_configuration" {

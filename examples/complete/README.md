@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# Syslog Policy Example
+# Adapter Configuration Policy Example
 
 To run this example you need to execute:
 
@@ -13,23 +13,15 @@ Note that this example will create resources. Resources can be destroyed with `t
 
 ### main.tf
 ```hcl
-module "syslog_policy" {
-  source  = "terraform-cisco-modules/policies-syslog/intersight"
+module "adapter_configuration" {
+  source  = "terraform-cisco-modules/policies-adapter_configuration/intersight"
   version = ">= 1.0.1"
 
-  description  = "default Syslog Policy."
-  name         = "default"
-  organization = "default"
-  remote_clients = [
-    {
-      enabled  = true
-      hostname = "198.18.1.21"
-    },
-    {
-      enabled  = true
-      hostname = "198.18.1.22"
-    }
-  ]
+  adapter_ports = 2
+  description   = "VIC 1497 Adapter Configuration Policy."
+  fec_modes     = ["cl91"]
+  name          = "default"
+  organization  = "default"
 }
 ```
 

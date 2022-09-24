@@ -16,7 +16,7 @@ data "intersight_organization_organization" "org_moid" {
 }
 
 module "main" {
-  source = "../.."
+  source   = "../.."
   org_moid = data.intersight_organization_organization.org_moid.moid
   name     = "test"
 }
