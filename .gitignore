@@ -395,5 +395,6 @@ $RECYCLE.BIN/
 *.tfstate
 *.tfstate.backup
 *.tfplan
+*.plan
 hidden.tf
 hidden.auto.tfvars
