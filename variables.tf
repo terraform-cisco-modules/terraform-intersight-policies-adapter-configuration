@@ -86,7 +86,7 @@ variable "profiles" {
   type = list(object(
     {
       name        = string
-      object_type = string
+      object_type = optional(string, "server.Profile")
     }
   ))
 }

@@ -48,12 +48,6 @@ locals {
       object_type  = "adapter.DceInterfaceSettings"
     }
   ]
-  profiles = {
-    for v in var.profiles : v.name => {
-      name        = v.name
-      object_type = v.object_type != null ? v.object_type : "server.Profile"
-    }
-  }
 }
 
 resource "intersight_adapter_config_policy" "adapter_configuration" {
