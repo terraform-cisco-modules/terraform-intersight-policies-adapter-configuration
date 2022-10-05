@@ -106,5 +106,5 @@ func TestFull(t *testing.T) {
 	// The AssertMOComply function only checks that what is expected is in the result. Extra fields in the
 	// result are ignored. This means we don't have to worry about things that aren't known in advance (e.g.
 	// Moids, timestamps, etc)
-	iassert.AssertMOComply(t, fmt.Sprintf("/api/v1/ntp/Policies/%s", moid), expectedJSONTemplate, vars)
+	iassert.AssertMOComply(t, fmt.Sprintf("/api/v1/adapter/ConfigPolicies/%s", moid), expectedJSONTemplate, vars)
 }
