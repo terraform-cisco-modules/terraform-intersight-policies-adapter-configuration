@@ -1,9 +1,5 @@
 terraform {
   required_providers {
-    test = {
-      source = "terraform.io/builtin/test"
-    }
-
     intersight = {
       source  = "CiscoDevNet/intersight"
       version = ">=1.0.32"
@@ -11,50 +7,34 @@ terraform {
   }
 }
 
-data "intersight_organization_organization" "org_moid" {
-  name = "default"
+# Setup provider, variables and outputs
+provider "intersight" {
+  apikey    = var.intersight_keyid
+  secretkey = file(var.intersight_secretkeyfile)
+  endpoint  = var.intersight_endpoint
 }
 
+variable "intersight_keyid" {}
+variable "intersight_secretkeyfile" {}
+variable "intersight_endpoint" {
+  default = "intersight.com"
+}
+variable "name" {}
+
+output "moid" {
+  value = module.main.moid
+}
+
+# This is the module under test
 module "main" {
   source              = "../.."
-  description         = "Adapter Configuration Example"
+  adapter_ports       = 4
+  description         = "VIC 1467 Adapter Configuration Policy."
   enable_fip          = true
   enable_lldp         = true
   enable_port_channel = true
-  fec_mode_1          = "cl91"
-  fec_mode_2          = "cl91"
-  fec_mode_3          = "cl91"
-  fec_mode_4          = "cl91"
-  name                = "test"
-  org_moid            = data.intersight_organization_organization.org_moid.moid
+  fec_modes           = ["cl91"]
+  name                = var.name
+  organization        = "default"
   pci_slot            = "MLOM"
-}
-
-data "intersight_adapter_config_policy" "adapter_configuration" {
-  depends_on = [
-    module.main
-  ]
-  name = "test"
-}
-
-resource "test_assertions" "adapter_configuration" {
-  component = "adapter_configuration"
-
-  # equal "description" {
-  #   description = "description"
-  #   got         = data.intersight_adapter_config_policy.adapter_configuration.description
-  #   want        = "Adapter Configuration Example"
-  # }
-  # 
-  # equal "name" {
-  #   description = "name"
-  #   got         = data.intersight_adapter_config_policy.adapter_configuration.name
-  #   want        = "test"
-  # }
-
-  equal "settings" {
-    description = "settings"
-    got         = data.intersight_adapter_config_policy.adapter_configuration.results[0].settings
-    want        = "tyson"
-  }
 }
