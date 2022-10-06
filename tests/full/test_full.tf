@@ -35,6 +35,6 @@ module "main" {
   enable_port_channel = true
   fec_modes           = ["cl91"]
   name                = var.name
-  organization        = "default"
+  organization        = "terratest"
   pci_slot            = "MLOM"
 }
