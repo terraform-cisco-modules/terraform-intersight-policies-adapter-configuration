@@ -1,4 +1,4 @@
-module github.com/terraform-cisco-modules/terraform-intersight-pools-ip
+module github.com/terraform-cisco-modules/terraform-intersight-policies-adapter-configuration
 
 go 1.18
 
