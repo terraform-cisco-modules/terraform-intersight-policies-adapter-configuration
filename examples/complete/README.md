@@ -66,8 +66,8 @@ variable "secretkeyfile" {
 ## Environment Variables
 
 ### Terraform Cloud/Enterprise - Workspace Variables
-- Add variable apikey with value of [your-api-key]
-- Add variable secretkey with value of [your-secret-file-content]
+- Add variable apikey with the value of [your-api-key]
+- Add variable secretkey with the value of [your-secret-file-content]
 
 ### Linux and Windows
 ```bash
