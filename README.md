@@ -104,9 +104,6 @@ export TF_VAR_secretkeyfile="<secret-key-file-location>"
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_apikey"></a> [apikey](#input\_apikey) | Intersight API Key. | `string` | n/a | yes |
-| <a name="input_endpoint"></a> [endpoint](#input\_endpoint) | Intersight URL. | `string` | `"https://intersight.com"` | no |
-| <a name="input_secretkey"></a> [secretkey](#input\_secretkey) | Intersight Secret Key. | `string` | n/a | yes |
 | <a name="input_adapter_ports"></a> [adapter\_ports](#input\_adapter\_ports) | The Number of Physical Ports of the Adapter. | `number` | `4` | no |
 | <a name="input_description"></a> [description](#input\_description) | Description of the Policy. | `string` | `""` | no |
 | <a name="input_enable_fip"></a> [enable\_fip](#input\_enable\_fip) | Status of FIP protocol on the adapter interfaces. | `bool` | `true` | no |
